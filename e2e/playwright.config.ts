@@ -26,16 +26,29 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
   ],
-  webServer: [
-    {
-      command: 'npm run start --workspace backend',
-      port: 9000,
-      reuseExistingServer: !process.env.CI,
-    },
-    {
-      command: 'npm run start --workspace storefront',
-      port: 4200,
-      reuseExistingServer: !process.env.CI,
-    },
-  ],
+  webServer: process.env.CI
+    ? [
+        {
+          command: 'cd ../backend && npm start',
+          port: 9000,
+          reuseExistingServer: false,
+        },
+        {
+          command: 'cd ../storefront && npm start',
+          port: 4200,
+          reuseExistingServer: false,
+        },
+      ]
+    : [
+        {
+          command: 'cd .. && npm run start --workspace backend',
+          port: 9000,
+          reuseExistingServer: true,
+        },
+        {
+          command: 'cd .. && npm run start --workspace storefront',
+          port: 4200,
+          reuseExistingServer: true,
+        },
+      ],
 });
