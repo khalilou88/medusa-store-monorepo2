@@ -77,6 +77,7 @@ git subtree add --prefix=backend --squash medusa-backend master
 ```
 
 **Note**: If the default branch is not `master`, check first:
+
 ```bash
 git ls-remote --heads https://github.com/medusajs/medusa-starter-default.git
 ```
@@ -128,13 +129,13 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   prettier,
-  
+
   // Global settings
   {
     plugins: {
       prettier: prettierPlugin,
     },
-    
+
     languageOptions: {
       globals: {
         ...globals.node,
@@ -143,18 +144,15 @@ export default tseslint.config(
       ecmaVersion: 2022,
       sourceType: 'module',
     },
-    
+
     rules: {
       'prettier/prettier': 'error',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        { argsIgnorePattern: '^_' }
-      ],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
-  
+
   // Storefront-specific configuration
   {
     files: ['storefront/**/*'],
@@ -164,7 +162,7 @@ export default tseslint.config(
       },
     },
   },
-  
+
   // E2E-specific configuration
   {
     files: ['e2e/**/*'],
@@ -174,7 +172,7 @@ export default tseslint.config(
       },
     },
   },
-  
+
   // Ignore patterns
   {
     ignores: [
@@ -734,6 +732,7 @@ npm run type-check
 ### Backend subtree management
 
 **Update backend from upstream:**
+
 ```bash
 npm run backend:update
 # or manually:
@@ -741,6 +740,7 @@ git subtree pull --prefix=backend --squash medusa-backend master
 ```
 
 **Push backend changes upstream (if you have write access):**
+
 ```bash
 npm run backend:push
 # or manually:
@@ -748,6 +748,7 @@ git subtree push --prefix=backend medusa-backend master
 ```
 
 **Make local changes to backend:**
+
 ```bash
 # Make changes in backend/ folder
 git add backend/
@@ -771,6 +772,7 @@ npm run dev
 ## ✅ Git Subtree vs Submodule Benefits
 
 **Git Subtree advantages:**
+
 - **Simpler for team members** - no special clone commands needed
 - **Self-contained** - all code is in the main repository
 - **Better CI/CD** - no submodule initialization required
@@ -778,16 +780,19 @@ npm run dev
 - **No broken references** - subtree commits are part of main repo history
 
 **Workflow differences:**
+
 - **Submodule**: `git clone --recurse-submodules`
 - **Subtree**: `git clone` (normal clone works)
 
 **Updates:**
+
 - **Submodule**: Update pointer to new commit
 - **Subtree**: Merge/squash latest changes into main repo
 
 ## ✅ ESLint 9 Migration Benefits
 
 **New features in ESLint 9:**
+
 - **Flat Config** - Simpler, more intuitive configuration with `eslint.config.js`
 - **Better TypeScript integration** - Improved performance and type checking
 - **Module-based plugins** - Cleaner plugin architecture
@@ -795,6 +800,7 @@ npm run dev
 - **Future-proof** - ESLint 9 is the current major version with active support
 
 **Configuration differences:**
+
 - **Old**: `.eslintrc.json` with extends/overrides pattern
 - **New**: `eslint.config.js` with flat configuration arrays
 - **Plugins**: Import-based instead of string-based plugin references
