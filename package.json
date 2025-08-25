@@ -1,7 +1,11 @@
 {
   "name": "medusa-store-monorepo",
   "private": true,
-  "workspaces": ["backend", "storefront", "e2e"],
+  "workspaces": [
+    "backend",
+    "storefront",
+    "e2e"
+  ],
   "scripts": {
     "dev": "concurrently \"npm run start --workspace backend\" \"npm run start --workspace storefront\"",
     "build": "npm run build --workspaces --if-present",

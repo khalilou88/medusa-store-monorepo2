@@ -1,0 +1,17 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY backend/package*.json ./
+RUN npm ci --only=production
+
+# Copy application code
+COPY backend/ ./
+
+# Build the application
+RUN npm run build
+
+EXPOSE 9000
+
+CMD ["npm", "start"]

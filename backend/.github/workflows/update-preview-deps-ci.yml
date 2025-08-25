@@ -1,4 +1,4 @@
-name: "Update Preview Dependencies (feat/ci)"
+name: 'Update Preview Dependencies (feat/ci)'
 on:
   workflow_dispatch:
 
@@ -28,7 +28,7 @@ jobs:
         run: yarn
 
       - name: Close Previous PRs
-        shell: "bash"
+        shell: 'bash'
         run: |
 
           PR_LIST=$(gh pr list --base ci --json number,headRefName)
@@ -57,13 +57,13 @@ jobs:
       - name: Open PR with changes
         uses: peter-evans/create-pull-request@v5
         with:
-          title: "chore(ci): updated preview dependencies [automated]"
-          commit-message: "chore(ci): updated preview dependencies [automated]"
-          body: "This PR updates preview dependencies to the latest versions."
-          branch: "chore/update-preview"
-          branch-suffix: "timestamp"
+          title: 'chore(ci): updated preview dependencies [automated]'
+          commit-message: 'chore(ci): updated preview dependencies [automated]'
+          body: 'This PR updates preview dependencies to the latest versions.'
+          branch: 'chore/update-preview'
+          branch-suffix: 'timestamp'
           token: ${{ secrets.PAT_TOKEN }}
-          base: "ci"
+          base: 'ci'
           add-paths: yarn.lock
-          committer: "GitHub <noreply@github.com>"
-          author: "GitHub <github-actions[bot]@users.noreply.github.com>"
+          committer: 'GitHub <noreply@github.com>'
+          author: 'GitHub <github-actions[bot]@users.noreply.github.com>'
