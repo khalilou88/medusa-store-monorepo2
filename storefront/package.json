@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "eslint . --fix",
     "lint:fix": "eslint . --fix",
-    "type-check": "ng build --dry-run"
+    "type-check": "tsc --noEmit"
   },
   "private": true,
   "dependencies": {
