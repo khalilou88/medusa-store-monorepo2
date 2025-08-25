@@ -559,7 +559,7 @@ jobs:
         run: npm run build
 
       - name: Run unit tests
-        run: npm run test
+        run: npm run test --workspace backend --if-present
 
       - name: Run E2E tests
         run: npm run test --workspace e2e
